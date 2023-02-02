@@ -19,13 +19,17 @@ jobs:
       - name: Build release
         run: cargo build --verbose --release
       - name: Release
-        uses: fnkr/github-action-ghr@v1
-        env:
-          GHR_PATH: target/release/ai_address_backend
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      - name: Clean older release
-        uses: dev-drprasad/delete-older-releases@v0.2.0
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          keep_latest: 3
+          repo_token: "${{ secrets.TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            target/release/ai_address_backend
+      - name: Clean older release
+        uses: dev-drprasad/delete-older-releases@latest
+        with:
+          keep_latest: 1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
