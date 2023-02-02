@@ -1,0 +1,28 @@
+POST http://127.0.0.1:8080/api/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="personImage"; filename="personImage.png"
+
+< ./files/personImage.png
+--WebAppBoundary--
+Content-Disposition: form-data; name="clothesImage"; filename="clothesImage.png"
+
+< ./files/clothesImage.png
+--WebAppBoundary--
+Content-Disposition: form-data; name="backgroundImage"; filename="backgroundImage.png"
+
+< ./files/backgroundImage.png
+--WebAppBoundary--
+###
+
+###
+GET http://127.0.0.1:8080/api/list
+Accept: application/json
+
+###
+GET http://127.0.0.1:8080/api/background?keyword=码头
+Accept: application/json
+
+###
+GET http://127.0.0.1:8080/api/hello
