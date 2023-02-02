@@ -96,7 +96,7 @@ async fn upload() -> impl Responder {
 async fn main() -> anyhow::Result<()> {
     let ip = "127.0.0.1";
     let port = 8080;
-    println!("Server running at http://{ip}:{port}");
+    println!("Server running at http://{ip}:{port}"); // TODO: secure link
     HttpServer::new(move || {
         App::new()
             .service(
